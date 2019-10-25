@@ -41,12 +41,12 @@ const Races = ({allRaces}) => (
         </fieldset>
       </form>
       <div>
-        <h1 className="f2">All races</h1>
+        <h1 className="ttu tracked f3 fw6 mt0 mb4">All races</h1>
         {
           allRaces.map((race, index) => {
             return <React.Fragment>
-              <h2 key={`heading-${index}`}>{race.name}</h2>
-              <table key={`table-${index}`} className="w-100">
+              <h2 className="f4 fw6" key={`heading-${index}`}>{race.name}</h2>
+              <table key={`table-${index}`} className="w-100 f5 mb5">
                 <thead>
                   <tr className="tl">
                     <th>Slug</th>
@@ -84,11 +84,17 @@ const Races = ({allRaces}) => (
         border-collapse: collapse;
       }
 
-      td, th {
+      th {
         border-bottom: 1px solid currentColor;
-        padding .5rem;
+        padding: .5rem 0;
+        font-weight: 600;
       }
-      
+
+      td {
+        border-bottom: 1px solid currentColor;
+        padding: .5rem 0;
+      }
+
       tr:nth-child(even) td {
         background-color: #f4f4f4;
       }

@@ -2,8 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 const links = [
-  { href: 'https://zeit.co/now', label: 'ZEIT' },
-  { href: 'https://github.com/zeit/next.js', label: 'GitHub' }
+  { href: 'https://dotwatcher.cc/results', label: 'Dotwatcher live results' }
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`
   return link
@@ -29,6 +28,7 @@ const Nav = () => (
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
           Helvetica, sans-serif;
+        color: #111111;
       }
       nav {
         text-align: center;
@@ -47,7 +47,7 @@ const Nav = () => (
       a {
         color: #067df7;
         text-decoration: none;
-        font-size: 13px;
+        font-size: 16px;
       }
     `}</style>
   </nav>
