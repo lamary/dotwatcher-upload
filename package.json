@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "now-build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "next": "9.1.1",
+    "pg": "^7.12.1",
     "react": "16.11.0",
     "react-dom": "16.11.0"
   }
