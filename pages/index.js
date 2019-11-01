@@ -36,7 +36,7 @@ const Home = ({ justLoggedIn, member, username, avatar_url }) => {
           {
             member ? <a href='/races' className='card'>
               <h3>Add a race</h3>
-            </a> : <a href='https://github.com/login/oauth/authorize?client_id=386ecb58d3d3d3534a4d&redirect_uri=http%3A%2F%2Flocalhost%3A3001&scope=read%3Aorg%2Cread%3Auser' className='card'>
+            </a> : <a href={`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${process.env.URL}&scope=read%3Aorg%2Cread%3Auser`} className='card'>
               <h3>Login</h3>
               <p>With your Github account, you need to be a member of the Dotwatcher organisation too</p>
             </a>
