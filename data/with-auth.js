@@ -10,7 +10,7 @@ export const WithAuth = Page => {
     const { membership } = nextCookies(ctx)
     const membershipDetails = membership ? JSON.parse(membership) : false
 
-    if (code) {
+    if (code && !membershipDetails) {
       const accessResponse = await fetch(`https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}&code=${code}`, {
         method: 'POST',
         headers: {
