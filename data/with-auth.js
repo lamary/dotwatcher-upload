@@ -29,7 +29,7 @@ export const WithAuth = Page => {
         }
       });
 
-      const { login: username, avatar_url } = await userResponse.json()
+      const { login: username } = await userResponse.json()
 
       const { status } = await fetch(`https://api.github.com/orgs/dotwatcher/members/${username}`, {
         method: 'GET',
@@ -41,7 +41,6 @@ export const WithAuth = Page => {
       return {
         ...(Page.getInitialProps ? await Page.getInitialProps() : {}),
         username,
-        avatar_url,
         status,
         member: status === 204,
         justLoggedIn: true
@@ -52,7 +51,6 @@ export const WithAuth = Page => {
       return {
         ...(Page.getInitialProps ? await Page.getInitialProps() : {}),
         username: membershipDetails.username,
-        avatar_url: membershipDetails.avatar_url,
         member: true,
         justLoggedIn: false
       };
