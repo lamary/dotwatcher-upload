@@ -9,5 +9,7 @@ const config = {
   user: process.env.PGUSER
 };
 
-const client = new Pool(config);
-module.exports = client
+const pool = new Pool(config);
+module.exports = {
+  query: (text, params) => pool.query(text, params),
+}

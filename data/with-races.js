@@ -10,7 +10,6 @@ export const WithRaces = Page => {
 
     const allResultsResponse = await fetch(`http://localhost:3000/api/all-races`);
     const allRaces = await allResultsResponse.json();
-    console.log(allRaces)
     return {
       ...(Page.getInitialProps ? await Page.getInitialProps() : {}),
       allRaces

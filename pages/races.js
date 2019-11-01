@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
+import CreateRace from '../components/create-race'
 import { WithRaces } from '../data/with-races';
 
 const Races = ({allRaces}) => (
@@ -14,38 +15,13 @@ const Races = ({allRaces}) => (
     <Nav />
 
     <div className="grid">
-      <form className="near-black">
-        <fieldset className="pa4 ba">
-          <legend className="ttu ph2 tracked f3 fw6">
-            Add a new race
-          </legend>
-          <label className="f4 mb2 db" htmlFor="name">Name</label>
-          <input type="text" className="input ba w-100 border-box f4 pa3 mb4" name="name" id="name" />
-          <label className="f4 mb2 db" htmlFor="year">Year</label>
-          <input type="text" className="input ba w-100 border-box f4 pa3 mb4" inputMode="numeric" pattern="[0-9]*" name="year" id="year" />
-          <label className="f4 mb2 db" htmlFor="length">Length (km)</label>
-          <input type="text" className="input ba w-100 border-box f4 pa3 mb4" inputMode="numeric" pattern="[0-9]*" name="length" id="length" />
-          <label className="f4 mb2 db" htmlFor="start-date">Start date</label>
-          <input type="date" className="input ba w-100 border-box f4 pa3 mb4" name="start-date" id="start-date" />
-          <label className="f4 mb2 db" htmlFor="end-date">End date</label>
-          <input type="date" className="input ba w-100 border-box f4 pa3 mb4" name="end-date" id="end-date" />
-          <label className="f4 mb2 db" htmlFor="start-location">Start location</label>
-          <input type="text" className="input ba w-100 border-box f4 pa3 mb4" name="start-location" id="start-location" />
-          <label className="f4 mb2 db" htmlFor="end-location">End location</label>
-          <input type="text" className="input ba w-100 border-box f4 pa3 mb4" name="end-location" id="end-location" />
-          <label className="f4 mb2 db" htmlFor="terrain">Terrain</label>
-          <input type="text" className="input ba w-100 border-box f4 pa3 mb4" name="terrain" id="terrain" />
-          <button className="input w-100 ba bg-near-black white f3 ttu tracked fw6 pa3">
-            Create
-          </button>
-        </fieldset>
-      </form>
+      <CreateRace/>
       <div>
         <h1 className="ttu tracked f3 fw6 mt0 mb4">All races</h1>
         {
           allRaces.map((race, index) => {
-            return <React.Fragment>
-              <h2 className="f4 fw6" key={`heading-${index}`}>{race.name}</h2>
+            return <React.Fragment key={`heading-${index}`}>
+              <h2 className="f4 fw6">{race.name}</h2>
               <table key={`table-${index}`} className="w-100 f5 mb5">
                 <thead>
                   <tr className="tl">
