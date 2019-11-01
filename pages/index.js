@@ -12,7 +12,7 @@ const Home = ({ justLoggedIn, member, username, avatar_url }) => {
       avatar_url
     }
 
-    cookie.set('membership', JSON.stringify(cookieData), { expires: 30 })
+    cookie.set('membership', JSON.stringify(cookieData), { expires: 30, secure: process.env.NODE_ENV === 'production' })
   }
 
   return (
