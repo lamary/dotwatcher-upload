@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "alias": [
+    "upload.dotwatcher.cc"
+  ],
+  "env": {
+    "PGHOST": "@pghost",
+    "PGUSER": "@pguser",
+    "PGPASSWORD": "@pgpassword",
+    "PGDATABASE": "@pgdatabase",
+    "PGPORT": "@pgport",
+    "GITHUB_CLIENT_ID": "@github-client-id",
+    "GITHUB_CLIENT_SECRET": "@github-client-secret",
+    "URL": "@upload-url"
+  },
+  "build": {
+    "env": {
+    "PGHOST": "@pghost",
+    "PGUSER": "@pguser",
+    "PGPASSWORD": "@pgpassword",
+    "PGDATABASE": "@pgdatabase",
+    "PGPORT": "@pgport",
+    "GITHUB_CLIENT_ID": "@github-client-id",
+    "GITHUB_CLIENT_SECRET": "@github-client-secret",
+    "URL": "@upload-url"
+  }
+  }
+}

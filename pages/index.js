@@ -60,6 +60,9 @@ const Home = ({ justLoggedIn, member, username, avatar_url }) => {
         .description {
           text-align: center;
         }
+        .description {
+          font-size: 1.2rem;
+        }
         .row {
           max-width: 880px;
           margin: 80px auto 40px;
