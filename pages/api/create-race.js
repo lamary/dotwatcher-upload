@@ -1,6 +1,6 @@
 import slugify from 'slugify'
 
-const db = require('../../database')
+import db from '../../database'
 
 function formatDate(dateString) {
   const dateTime = new Date(dateString)
