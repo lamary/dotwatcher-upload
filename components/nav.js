@@ -2,7 +2,14 @@ import React from 'react'
 import Link from 'next/link'
 
 const links = [
-  { href: 'https://dotwatcher.cc/results', label: 'Dotwatcher live results' }
+  {
+    href: '/races',
+    label: 'Races'
+  },
+  {
+    href: 'https://dotwatcher.cc/results',
+    label: 'Dotwatcher live results'
+  }
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`
   return link

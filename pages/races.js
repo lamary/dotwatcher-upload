@@ -4,7 +4,7 @@ import Nav from '../components/nav'
 import CreateRace from '../components/create-race'
 import { WithRaces } from '../data/with-races';
 
-const Races = ({allRaces}) => (
+const Races = ({ allRaces }) => (
   <React.Fragment>
     <Head>
       <title>Races</title>

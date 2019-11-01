@@ -2,11 +2,14 @@
 
 import React from 'react';
 import fetch from 'isomorphic-fetch';
+import auth from '../utils/auth-check'
 
 export const WithRaces = Page => {
   const WithRaces = props => <Page {...props} />
 
-  WithRaces.getInitialProps = async () => {
+  WithRaces.getInitialProps = async (ctx) => {
+
+    auth(ctx)
 
     const allResultsResponse = await fetch(`http://localhost:3000/api/all-races`);
     const allRaces = await allResultsResponse.json();
