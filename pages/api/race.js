@@ -1,15 +1,13 @@
-import pool from '../../database'
+import db from '../../database'
 
 export default async function handle(req, res) {
-  const client = await pool.connect()
-	const { slug, year } = req.query
+	const { id } = req.query
 
   try {
-    const { rows: results } = await client.query(`SELECT riders.name, races.name AS racename, races.year, results.position, results.cap, results.class, results.days, results.hours, results.minutes, results.result, results.bike, results.category FROM results, riders, races WHERE riders.id = results.riderid AND races.id = results.raceid AND races.slug = '${slug}' AND races.year = ${year}`)
-    res.json({ results })
+    const { rows: race } = await db.query(`SELECT name, id, year FROM races WHERE races.id = '${id}';`)
+    const { rows: results } = await db.query(`SELECT riders.name, results.position, results.cap, results.class, results.days, results.hours, results.minutes, results.result, results.bike, results.category FROM results, riders, races WHERE riders.id = results.riderid AND races.id = results.raceid AND races.id = '${id}';`)
+    res.json({race, results})
   } catch (error) {
     res.json({ error })
-  } finally {
-    client.release()
   }
 }

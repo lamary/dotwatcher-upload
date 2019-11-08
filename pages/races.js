@@ -28,6 +28,7 @@ const Races = ({ allRaces }) => (
                     <th>Slug</th>
                     <th>Year</th>
                     <th>Length (km)</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,7 @@ const Races = ({ allRaces }) => (
                         <td>{event.slug}</td>
                         <td>{event.year}</td>
                         <td>{event.length}</td>
+                        <td><a className="link" href={`/race/${event.id}`}>Add results</a></td>
                       </tr>
                     })
                   }
