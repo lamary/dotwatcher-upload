@@ -21,6 +21,7 @@ class Races extends Component {
   }
 
   render() {
+    const dateNow = new Date()
     return (
       <React.Fragment>
         <Head>
@@ -45,7 +46,7 @@ class Races extends Component {
               <span className="tracked">{this.props.race.name} {this.props.race.year}</span>
               <span className="fr">
                 <DeleteResults race={this.props.race}/>
-                <CSVLink className="ttn f4 link blue fw4 underline" data={this.props.download}>Download CSV of results</CSVLink>
+                <CSVLink className="ttn f4 link blue fw4 underline" data={this.props.download} filename={`${this.props.race.slug}-download-${dateNow.toISOString()}.csv`}>Download CSV of results</CSVLink>
               </span>
             </h1>
             <Table results={this.props.results} />
