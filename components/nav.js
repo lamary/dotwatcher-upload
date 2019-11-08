@@ -20,12 +20,12 @@ const Nav = () => (
     <ul>
       <li>
         <Link href='/'>
-          <a>Home</a>
+          <a className="link blue underline">Home</a>
         </Link>
       </li>
       {links.map(({ key, href, label }) => (
         <li key={key}>
-          <a href={href}>{label}</a>
+          <a className="link blue underline" href={href}>{label}</a>
         </li>
       ))}
     </ul>
@@ -50,11 +50,6 @@ const Nav = () => (
       li {
         display: flex;
         padding: 6px 8px;
-      }
-      a {
-        color: #067df7;
-        text-decoration: none;
-        font-size: 16px;
       }
     `}</style>
   </nav>

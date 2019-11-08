@@ -61,34 +61,8 @@ class CreateRace extends Component {
         </form>
 
         <style jsx>{`
-        .grid {
-          display: grid;
-          grid-template-columns: 32rem [sidebar] 1fr [content];
-          grid-gap: 4em;
-          margin: 2em;
-        }
-
-        table {
-          border-spacing: 0;
-          border-collapse: collapse;
-        }
-
-        th {
-          border-bottom: 1px solid currentColor;
-          padding: .5rem 0;
-          font-weight: 600;
-        }
-
-        td {
-          border-bottom: 1px solid currentColor;
-          padding: .5rem 0;
-        }
-
-        tr:nth-child(even) td {
-          background-color: #f4f4f4;
-        }
-
-        input:focus {
+        input:focus,
+        textarea:focus {
           background-color: #f6fffe;
           border-color: #96CCFF;
         }
