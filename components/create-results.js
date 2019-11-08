@@ -24,7 +24,6 @@ class CreateResults extends Component {
   }
 
   handleCSV = parsedCsvData => {
-    console.log(parsedCsvData)
     this.props.setUploadedResults(parsedCsvData)
   }
 
