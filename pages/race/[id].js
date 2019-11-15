@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { CSVLink } from "react-csv";
 import Nav from '../../components/nav'
 import CreateResults from '../../components/create-results'
-import DeleteResults from '../../components/delete-results'
+import DeleteButton from '../../components/delete-button'
 import Table from '../../components/table'
 import { WithRace } from '../../data/with-race';
 
@@ -45,8 +45,8 @@ class Races extends Component {
             <h1 className="ttu f3 fw6 mt0 mb4">
               <span className="tracked">{this.props.race.name} {this.props.race.year}</span>
               <span className="fr">
-                <DeleteResults race={this.props.race}/>
-                <CSVLink className="ttn f4 link blue fw4 underline" data={this.props.download} filename={`${this.props.race.slug}-download-${dateNow.toISOString()}.csv`}>Download CSV of results</CSVLink>
+                <DeleteButton deleteType="results" race={this.props.race}/>
+                <CSVLink className="ml4 ttn f4 link blue fw4 underline" data={this.props.download} filename={`${this.props.race.slug}-download-${dateNow.toISOString()}.csv`}>Download CSV of results</CSVLink>
               </span>
             </h1>
             <Table results={this.props.results} />

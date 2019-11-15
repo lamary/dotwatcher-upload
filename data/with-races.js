@@ -11,7 +11,7 @@ export const WithRaces = Page => {
 
     auth(ctx)
 
-    const allResultsResponse = await fetch(`${process.env.URL}/api/all-races`);
+    const allResultsResponse = await fetch(`${process.env.BASEURL ? process.env.BASEURL : ''}/api/all-races`);
     const allRaces = await allResultsResponse.json();
     return {
       ...(Page.getInitialProps ? await Page.getInitialProps() : {}),

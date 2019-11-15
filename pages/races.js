@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
 import CreateRace from '../components/create-race'
+import DeleteRace from '../components/delete-button'
 import { WithRaces } from '../data/with-races';
 
 const Races = ({ allRaces }) => (
@@ -28,7 +29,7 @@ const Races = ({ allRaces }) => (
                     <th>Slug</th>
                     <th>Year</th>
                     <th>Length (km)</th>
-                    <th>Action</th>
+                    <th colSpan="2">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,7 @@ const Races = ({ allRaces }) => (
                         <td>{event.year}</td>
                         <td>{event.length}</td>
                         <td><a className="link" href={`/race/${event.id}`}>Add results</a></td>
+                        <td><DeleteRace deleteType="race" race={event} /></td>
                       </tr>
                     })
                   }

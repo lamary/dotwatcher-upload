@@ -24,8 +24,8 @@ export default async function handle(req, res) {
   ]
 
   try {
-    const result = await db.query(`INSERT INTO races(name, slug, year, startDate, endDate, startLocation, finishLocation, length, terrain, description) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`, values)
-    return res.json({ status: 200, result })
+    const result = await db.query(`INSERT INTO races(name, slug, year, startDate, endDate, startLocation, finishLocation, length, terrain, description) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id`, values)
+    return res.json({ status: 200, id: result.rows[0].id })
   } catch (error) {
     return res.json({ status: 500,  title: 'something was bad with your inputs', error })
   }

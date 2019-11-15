@@ -11,7 +11,7 @@ export const WithRace = Page => {
 
     auth(ctx)
 
-    const allResultsResponse = await fetch(`${process.env.URL}/api/race?id=${ctx.query.id}`);
+    const allResultsResponse = await fetch(`${process.env.BASEURL ? process.env.BASEURL : ''}/api/race?id=${ctx.query.id}`);
     const {race, results} = await allResultsResponse.json();
 
     const csvHeaders = ['Name', 'Position', 'Cap', 'Class', 'Days', 'Hours', 'Minutes', 'Result', 'Bike', 'Category']
