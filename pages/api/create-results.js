@@ -17,12 +17,12 @@ export default async function handle(req, res) {
         // console.log('rider not found')
         const newRider = await db.query(`INSERT INTO riders(name) VALUES($1) RETURNING id`, [row.name])
         riderID = newRider.rows[0].id
-        // console.log('New rider created:', newRider)
+        // console.log('New rider created:', newRider.rows[0].id)
       }
 
       row.name = riderID
       const rowToArray = [raceID, ...Object.values(row)]
-      await db.query(`INSERT INTO results(raceid, riderid, position, cap, class, days, hours, minutes, result, bike, category) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`, rowToArray)
+      db.query(`INSERT INTO results(raceid, riderid, position, cap, class, days, hours, minutes, result, bike, category) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`, rowToArray)
     }
 
     return res.json({ status: 200 })
