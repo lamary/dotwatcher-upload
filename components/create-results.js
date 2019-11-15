@@ -5,6 +5,9 @@ import Router from 'next/router'
 class CreateResults extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      results: []
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -17,13 +20,14 @@ class CreateResults extends Component {
     const response = await result.json()
 
     if (response.status === 200) {
-      Router.push(`/race/${this.props.race.id}`)
+      this.props.setSavedResults(this.state.results)
+      this.props.setUploadedResults([])
       document.getElementById('form').reset();
-      window.scrollTo(0, 0)
     }
   }
 
   handleCSV = parsedCsvData => {
+    this.setState({ results: parsedCsvData });
     this.props.setUploadedResults(parsedCsvData)
   }
 
@@ -38,7 +42,7 @@ class CreateResults extends Component {
           .replace(/\W/g, '')
     }
     const FileUploadLabel = <label className="f4 mb2 db lh-copy" htmlFor="description">
-      Results from csv file <span className="f5 gray">(Download the template <a className="link blue" href="#">here</a>)</span>
+      Results from csv file <span className="f5 gray">(Download the template <a className="link blue" href="/sample.csv">here</a>)</span>
     </label>
 
     const newResults = <div><p className="f4 measure">This race doesn’t have any results, upload a CSV to add some.</p></div>

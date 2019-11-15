@@ -11,13 +11,18 @@ class Races extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newResults: []
+      newResults: [],
+      savedResults: []
     };
     this.setUploadedResults = this.setUploadedResults.bind(this);
   }
 
   setUploadedResults(results) {
     this.setState({ newResults: results });
+  }
+
+  setSavedResults(results) {
+    this.setState({ savedResults: results });
   }
 
   render() {
@@ -33,7 +38,7 @@ class Races extends Component {
         <Nav />
 
         <div className="grid">
-          <CreateResults race={this.props.race} results={this.props.results} newResults={this.state.newResults} setUploadedResults={this.setUploadedResults.bind(this)} />
+          <CreateResults race={this.props.race} results={this.props.results} newResults={this.state.newResults} setUploadedResults={this.setUploadedResults.bind(this)} setSavedResults={this.setSavedResults.bind(this)} />
           <div>
             {
               this.state.newResults.length > 0 ? <div className="pa4 bg-washed-yellow mb5">
@@ -49,7 +54,7 @@ class Races extends Component {
                 <CSVLink className="ml4 ttn f4 link blue fw4 underline" data={this.props.download} filename={`${this.props.race.slug}-download-${dateNow.toISOString()}.csv`}>Download CSV of results</CSVLink>
               </span>
             </h1>
-            <Table results={this.props.results} />
+            <Table results={this.state.savedResults.length > 0 ? this.state.savedResults : this.props.results} />
           </div>
         </div>
         <style jsx>{`
