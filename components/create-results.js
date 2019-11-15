@@ -6,13 +6,15 @@ class CreateResults extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: []
+      results: [],
+      loading: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit = async event => {
     event.preventDefault();
+    this.setState({ loading: true });
     const result = await fetch(`/api/create-results?id=${this.props.race.id}`, {
       method: 'POST',
       body: JSON.stringify(this.props.newResults)
@@ -23,6 +25,7 @@ class CreateResults extends Component {
       this.props.setSavedResults(this.state.results)
       this.props.setUploadedResults([])
       document.getElementById('form').reset();
+      this.setState({ loading: false });
     }
   }
 
@@ -69,6 +72,7 @@ class CreateResults extends Component {
             <button className="input-reset w-100 ba bg-near-black hover-bg-blue white f3 ttu tracked fw6 pa3">
               Save changes
             </button>
+            <img className={`${this.state.loading ? 'db' : 'dn'} mt3 w1 center`} src="/spinner.gif" />
           </fieldset>
         </form>
 

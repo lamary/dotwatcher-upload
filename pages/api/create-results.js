@@ -10,7 +10,6 @@ export default async function handle(req, res) {
     for (const row of resultsData) {
       const { rows: riderResults } = await db.query(`SELECT id, riders.name FROM riders WHERE riders.name = '${row.name}'`) || []
 
-
       if (riderResults.length) {
         // console.log('rider found', riderResults[0].name, riderResults[0].id)
         riderID = riderResults[0].id
