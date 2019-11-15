@@ -7,7 +7,7 @@ export default async function handle(req, res) {
   const resultsData = JSON.parse(req.body)
 
   try {
-    resultsData.forEach(async row => {
+    resultsData.forEach(row => {
       const { rows: riderResults } = await db.query(`SELECT id, riders.name FROM riders WHERE riders.name = '${row.name}'`) || []
 
 
