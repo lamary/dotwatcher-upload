@@ -7,7 +7,7 @@ export default async function handle(req, res) {
   const resultsData = JSON.parse(req.body)
 
   try {
-    resultsData.forEach(row => {
+    for (const row of resultsData) {
       const { rows: riderResults } = await db.query(`SELECT id, riders.name FROM riders WHERE riders.name = '${row.name}'`) || []
 
 
@@ -24,7 +24,7 @@ export default async function handle(req, res) {
       row.name = riderID
       const rowToArray = [raceID, ...Object.values(row)]
       await db.query(`INSERT INTO results(raceid, riderid, position, cap, class, days, hours, minutes, result, bike, category) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`, rowToArray)
-    })
+    }
 
     return res.json({ status: 200 })
   } catch (error) {
