@@ -22,9 +22,7 @@ class CreateRace extends Component {
     const response = await result.json()
     
     if (response.status === 200) {
-      Router.push('/races')
-      document.getElementById('form').reset();
-      window.scrollTo(0, 0)
+      Router.push(`/race/${response.id}`)
     }
   }
 
