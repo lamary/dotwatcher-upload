@@ -24,6 +24,7 @@ class CreateResults extends Component {
     if (response.status === 200) {
       this.props.setSavedResults(this.state.results)
       this.props.setUploadedResults([])
+      this.props.setErrors(response.erroringLines)
       document.getElementById('form').reset();
       this.setState({ loading: false });
     }

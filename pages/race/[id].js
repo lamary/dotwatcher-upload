@@ -12,7 +12,8 @@ class Races extends Component {
     super(props);
     this.state = {
       newResults: [],
-      savedResults: []
+      savedResults: [],
+      errors: []
     };
     this.setUploadedResults = this.setUploadedResults.bind(this);
   }
@@ -23,6 +24,10 @@ class Races extends Component {
 
   setSavedResults(results) {
     this.setState({ savedResults: results });
+  }
+
+  setErrors(erroringLines) {
+    this.setState({ errors: erroringLines });
   }
 
   render() {
@@ -38,8 +43,17 @@ class Races extends Component {
         <Nav />
 
         <div className="grid">
-          <CreateResults race={this.props.race} results={this.props.results} newResults={this.state.newResults} setUploadedResults={this.setUploadedResults.bind(this)} setSavedResults={this.setSavedResults.bind(this)} />
+          <CreateResults race={this.props.race} results={this.props.results} newResults={this.state.newResults} setUploadedResults={this.setUploadedResults.bind(this)} setSavedResults={this.setSavedResults.bind(this)} setErrors={this.setErrors.bind(this)}/>
           <div>
+            {
+              this.state.errors.length > 0 ? <div className="pa4 bg-washed-red mb5">
+                <h2 className="red">There were errors with the following lines</h2>
+                <p className="f4 lh-copy">These lines have not been added</p>
+                {this.state.errors.map(error => {
+                  return (<p className="f4 code lh-copy"><strong>Line {error.line}:</strong> {error.row.join()}</p>)
+                })}
+                </div> : null
+            }
             {
               this.state.newResults.length > 0 ? <div className="pa4 bg-washed-yellow mb5">
                 <h1 className="ttu tracked f3 fw6 mt0 mb4">CSV preview</h1>
