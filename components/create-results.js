@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CSVReader from 'react-csv-reader'
-import Router from 'next/router'
 
 class CreateResults extends Component {
   constructor(props) {
@@ -17,6 +16,10 @@ class CreateResults extends Component {
     this.setState({ loading: true });
     const result = await fetch(`/api/create-results?id=${this.props.race.id}`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
       body: JSON.stringify(this.props.newResults)
     });
     const response = await result.json()

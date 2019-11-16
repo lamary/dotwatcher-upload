@@ -8,7 +8,7 @@ function formatDate(dateString) {
 }
 
 export default async function handle(req, res) {
-  const formData = JSON.parse(req.body)
+  const formData = req.body
   const slug = slugify(`${formData.name} ${formData.year}`, { lower: true })
   const values = [
     formData.name,

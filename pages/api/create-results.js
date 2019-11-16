@@ -4,7 +4,7 @@ export default async function handle(req, res) {
   const raceID = req.query.id
   let riderID
 
-  const resultsData = JSON.parse(req.body)
+  const resultsData = req.body
 
   try {
     let erroringLines = []
