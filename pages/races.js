@@ -39,7 +39,7 @@ const Races = ({ allRaces }) => (
                         <td>{event.slug}</td>
                         <td>{event.year}</td>
                         <td>{event.length}</td>
-                        <td><a className="link" href={`/race/${event.id}`}>Add results</a></td>
+                        <td><a className="link ba bw1 b--blue bg-blue hover-bg-dark-blue white ttn f4 fw4 pv1 ph2" href={`/race/${event.id}`}>Edit results</a></td>
                         <td><DeleteRace deleteType="race" race={event} /></td>
                       </tr>
                     })
