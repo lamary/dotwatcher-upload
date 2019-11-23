@@ -3,15 +3,16 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
 import auth from '../utils/auth-check'
+import apiUrl from '../utils/api-url'
 
 export const WithRace = Page => {
   const WithRace = props => <Page {...props} />
 
-  WithRace.getInitialProps = async (ctx) => {
+  WithRace.getInitialProps = async ctx => {
 
     auth(ctx)
 
-    const allResultsResponse = await fetch(`${process.env.BASEURL ? process.env.BASEURL : ''}/api/race?id=${ctx.query.id}`);
+    const allResultsResponse = await fetch(apiUrl(`/api/race?id=${ctx.query.id}`, ctx.req));
     const {race, results} = await allResultsResponse.json();
 
     const csvHeaders = ['Name', 'Position', 'Cap', 'Class', 'Days', 'Hours', 'Minutes', 'Result', 'Bike', 'Category', 'Finish location', 'Notes']
