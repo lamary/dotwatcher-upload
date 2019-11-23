@@ -9,7 +9,7 @@ function formatDate(dateString) {
 
 export default async function handle(req, res) {
   const formData = req.body
-  const slug = slugify(`${formData.name} ${formData.year}`, { lower: true })
+  const slug = slugify(`${formData.name} ${formData.year}`, { lower: true, remove: /[$*_+~.()'"!:@?%=]/g })
   const values = [
     formData.name,
     slug,
