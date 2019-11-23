@@ -26,7 +26,7 @@ export default async function handle(req, res) {
       row.name = riderID
       const rowToArray = [raceID, ...Object.values(row)]
       try {
-        await db.query(`INSERT INTO results(raceid, riderid, position, cap, class, days, hours, minutes, result, bike, category) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`, rowToArray)
+        await db.query(`INSERT INTO results(raceid, riderid, position, cap, class, days, hours, minutes, result, bike, category, finishLocation, notes) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`, rowToArray)
       } catch (error) {
         erroringLines.push({ line: i, row: Object.values(rowOriginal), error })
       }
@@ -48,6 +48,6 @@ export default async function handle(req, res) {
 // minutes int,
 // result resultType,
 // bike bike,
-// dataSource varchar(80),
+// finishLocation varchar(80),
 // category category,
 // notes text
