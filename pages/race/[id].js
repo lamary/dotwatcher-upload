@@ -7,6 +7,12 @@ import DeleteButton from "../../components/delete-button";
 import Table from "../../components/table";
 import EditRace from "../../components/edit-race";
 import { WithRace } from "../../data/with-race";
+import styled from "styled-components";
+
+const Section = styled.section`
+  display: grid;
+  grid-template-columns: 30% 70%;
+`;
 
 class Races extends Component {
   constructor(props) {
@@ -45,14 +51,17 @@ class Races extends Component {
         <Nav />
 
         <div className="grid">
-          <CreateResults
-            race={this.props.race}
-            results={this.props.results}
-            newResults={this.state.newResults}
-            setUploadedResults={this.setUploadedResults.bind(this)}
-            setSavedResults={this.setSavedResults.bind(this)}
-            setErrors={this.setErrors.bind(this)}
-          />
+          <Section>
+            <EditRace race={this.props.race} />
+            <CreateResults
+              race={this.props.race}
+              results={this.props.results}
+              newResults={this.state.newResults}
+              setUploadedResults={this.setUploadedResults.bind(this)}
+              setSavedResults={this.setSavedResults.bind(this)}
+              setErrors={this.setErrors.bind(this)}
+            />
+          </Section>
           <div>
             {this.state.errors.length > 0 ? (
               <div className="pa4 bg-washed-red mb5">
@@ -74,8 +83,6 @@ class Races extends Component {
                 <Table results={this.state.newResults} />
               </div>
             ) : null}
-
-            <EditRace race={this.props.race} />
 
             <h1 className="ttu f3 fw6 mt0 mb4">
               <span className="tracked">
