@@ -53,7 +53,7 @@ class CreateRace extends Component {
         <form id="form" className="near-black" onSubmit={this.handleSubmit}>
           <fieldset className="pa4 ba">
             <legend className="ttu ph2 tracked f3 fw6">
-              {editing ? "Edit Race ( start / end date is un-editable) " : "Add a new race"}
+              {editing ? "Edit Race ( start / end date   is un-editable) " : "Add a new race"}
             </legend>
             <label className="f4 mb2 db" htmlFor="name">
               Name
