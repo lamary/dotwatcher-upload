@@ -23,7 +23,7 @@ export default async function handle(req, res) {
     formData["end-location"],
     formData.length,
     formData.terrain,
-    formData.description,
+    encodeURIComponent(formData.description),
   ];
 
   try {

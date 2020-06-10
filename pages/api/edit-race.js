@@ -1,10 +1,5 @@
 import db from "../../database";
 
-function formatDate(dateString) {
-  const dateTime = new Date(dateString);
-  return dateTime.toISOString();
-}
-
 export default async function handle(req, res) {
   const formData = req.body;
 
@@ -16,7 +11,7 @@ export default async function handle(req, res) {
     endLocation: formData["end-location"],
     length: formData.length,
     terrain: formData.terrain,
-    description: formData.description,
+    description: encodeURIComponent(formData.description),
   };
 
   const query = `UPDATE races set name = '${values.name}', startlocation = '${values.startLocation}', finishlocation = '${values.endLocation}', length = ${values.length}, terrain = '${values.terrain}', description = '${values.description}' where races.slug = '${slug}'`;
@@ -25,6 +20,7 @@ export default async function handle(req, res) {
     const result = await db.query(query);
     return res.json({ status: 200, race: result.rows[0] });
   } catch (error) {
+    console.log(error);
     return res.json({ status: 500, title: "something was bad with your inputs", error });
   }
 }
