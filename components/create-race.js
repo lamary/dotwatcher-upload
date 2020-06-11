@@ -46,7 +46,6 @@ class CreateRace extends Component {
       Router.push(`/race/${response.id}`);
     }
   }
-
   render() {
     const { editing } = this.props;
     return (
@@ -164,7 +163,7 @@ class CreateRace extends Component {
               id="description"
               className="input ba w-100 border-box f4 pa3 mb4"
               rows="5"
-              defaultValue={decodeURIComponent(this.state.values["description"])}
+              defaultValue={this.state.values["description"]}
             ></textarea>
             <button className="input w-100 ba bg-near-black hover-bg-blue white f3 ttu tracked fw6 pa3">
               {editing ? "Edit" : "Create"}
