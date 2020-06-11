@@ -1,46 +1,55 @@
-import React from 'react'
-import Head from 'next/head'
-import Nav from '../components/nav'
-import { WithAuth } from '../data/with-auth';
-import cookie from 'js-cookie'
+import React from "react";
+import Head from "next/head";
+import Nav from "../components/nav";
+import { WithAuth } from "../data/with-auth";
+import cookie from "js-cookie";
+
+export const REDIRECT_URL = process.env.GITHUB_REDIRECT_URL || `https://${process.env.VERCEL_URL}`;
 
 const Home = ({ justLoggedIn, member, username, avatar_url }) => {
-
   if (justLoggedIn) {
     const cookieData = {
       username,
-      avatar_url
-    }
+      avatar_url,
+    };
 
-    cookie.set('membership', JSON.stringify(cookieData), { expires: 30, secure: process.env.NODE_ENV === 'production' })
+    cookie.set("membership", JSON.stringify(cookieData), {
+      expires: 30,
+      secure: process.env.NODE_ENV === "production",
+    });
   }
 
   return (
     <div>
       <Head>
         <title>Home</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Nav />
 
-      <div className='hero'>
-        <h1 className='title'>Dotwatcher uploader thing</h1>
-        <p className='description'>
-          {
-            member ? `hello ${username}` : 'To get started, you need to login.'
-          }
+      <div className="hero">
+        <h1 className="title">Dotwatcher uploader thing</h1>
+        <p className="description">
+          {member ? `hello ${username}` : "To get started, you need to login."}
         </p>
 
-        <div className='row'>
-          {
-            member ? <a href='/races' className='card'>
+        <div className="row">
+          {member ? (
+            <a href="/races" className="card">
               <h3>Add a race</h3>
-            </a> : <a href={`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${process.env.BASEURL ? process.env.BASEURL : ''}&scope=read%3Aorg%2Cread%3Auser`} className='card'>
-              <h3>Login</h3>
-              <p>With your Github account, you need to be a member of the Dotwatcher organisation too</p>
             </a>
-          }
+          ) : (
+            <a
+              href={`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${REDIRECT_URL}&scope=read%3Aorg%2Cread%3Auser`}
+              className="card"
+            >
+              <h3>Login</h3>
+              <p>
+                With your Github account, you need to be a member of the Dotwatcher organisation too
+              </p>
+            </a>
+          )}
         </div>
       </div>
 
@@ -94,7 +103,7 @@ const Home = ({ justLoggedIn, member, username, avatar_url }) => {
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
-export default WithAuth(Home)
+export default WithAuth(Home);
