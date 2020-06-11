@@ -21,24 +21,31 @@ class Races extends Component {
       newResults: [],
       savedResults: [],
       errors: [],
+      info: [],
     };
     this.setUploadedResults = this.setUploadedResults.bind(this);
   }
 
-  setUploadedResults(results) {
-    this.setState({ newResults: results });
+  setUploadedResults(newResults) {
+    this.setState({ newResults });
   }
 
-  setSavedResults(results) {
-    this.setState({ savedResults: results });
+  setSavedResults(savedResults) {
+    this.setState({ savedResults });
   }
 
-  setErrors(erroringLines) {
-    this.setState({ errors: erroringLines });
+  setErrors(errors) {
+    this.setState({ errors });
+  }
+
+  setInfo(info) {
+    this.setState({ info });
   }
 
   render() {
     const dateNow = new Date();
+
+    console.log(this.state.info);
 
     return (
       <React.Fragment>
@@ -60,8 +67,19 @@ class Races extends Component {
               setUploadedResults={this.setUploadedResults.bind(this)}
               setSavedResults={this.setSavedResults.bind(this)}
               setErrors={this.setErrors.bind(this)}
+              setInfo={this.setInfo.bind(this)}
             />
           </Section>
+
+          {this.state.info.length > 0 && (
+            <div>
+              {this.state.info.map((item, i) => (
+                <p className="f4 code lh-copy" key={i}>
+                  {item}
+                </p>
+              ))}
+            </div>
+          )}
           <div>
             {this.state.errors.length > 0 ? (
               <div className="pa4 bg-washed-red mb5">

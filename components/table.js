@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-const Table = ({results}) => (
+const Table = ({ results }) => (
   <React.Fragment>
     <table className="w-100 f5 mb5">
       <thead>
@@ -15,14 +15,15 @@ const Table = ({results}) => (
           <th>Result</th>
           <th>Bike</th>
           <th>Category</th>
+          <th>Nationality</th>
           <th>Finish location</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
-        {
-          results.map((result, index) => {
-            return <tr key={index}>
+        {results.map((result, index) => {
+          return (
+            <tr key={index}>
               <td>{result.name}</td>
               <td>{result.position}</td>
               <td>{result.cap}</td>
@@ -33,11 +34,12 @@ const Table = ({results}) => (
               <td>{result.result}</td>
               <td>{result.bike}</td>
               <td>{result.category}</td>
+              <td>{result.nationality}</td>
               <td>{result.finishlocation}</td>
               <td>{result.notes}</td>
             </tr>
-          })
-        }
+          );
+        })}
       </tbody>
     </table>
     <style jsx>{`
@@ -55,13 +57,13 @@ const Table = ({results}) => (
 
       th {
         border-bottom: 1px solid currentColor;
-        padding: .5rem 0;
+        padding: 0.5rem 0;
         font-weight: 600;
       }
 
       td {
         border-bottom: 1px solid currentColor;
-        padding: .5rem 0;
+        padding: 0.5rem 0;
       }
 
       tr:nth-child(even) td {
@@ -69,6 +71,6 @@ const Table = ({results}) => (
       }
     `}</style>
   </React.Fragment>
-)
+);
 
-export default Table
+export default Table;

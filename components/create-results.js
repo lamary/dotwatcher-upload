@@ -25,9 +25,11 @@ class CreateResults extends Component {
     const response = await result.json();
 
     if (response.status === 200) {
+      console.log(response);
       this.props.setSavedResults(this.state.results);
       this.props.setUploadedResults([]);
       this.props.setErrors(response.erroringLines);
+      this.props.setInfo(response.infoLines);
       document.getElementById("form").reset();
       this.setState({ loading: false });
     } else {
