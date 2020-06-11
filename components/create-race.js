@@ -164,7 +164,7 @@ class CreateRace extends Component {
               id="description"
               className="input ba w-100 border-box f4 pa3 mb4"
               rows="5"
-              defaultValue={this.state.values["description"]}
+              defaultValue={decodeURIComponent(this.state.values["description"])}
             ></textarea>
             <button className="input w-100 ba bg-near-black hover-bg-blue white f3 ttu tracked fw6 pa3">
               {editing ? "Edit" : "Create"}
