@@ -5,6 +5,8 @@ import { WithAuth } from "../data/with-auth";
 import cookie from "js-cookie";
 
 export const REDIRECT_URL = process.env.GITHUB_REDIRECT_URL || `https://${process.env.VERCEL_URL}`;
+
+console.log(REDIRECT_URL);
 //
 const Home = ({ justLoggedIn, member, username, avatar_url }) => {
   if (justLoggedIn) {
