@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import Nav from "../../components/nav";
-import { WithAuth } from "../../data/with-auth";
+import auth from "../../utils/auth-check";
 import Axios from "axios";
 import jsonexport from "jsonexport/dist";
 import saveCSV from "../../utils/save-csv";
@@ -97,7 +97,7 @@ const filterByDateRange = ({ data, startDate, endDate }) => {
   });
 };
 
-export default WithAuth(() => {
+const Profiles = () => {
   const [date, setDate] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -275,4 +275,12 @@ export default WithAuth(() => {
       </Wrapper>
     </div>
   );
-});
+};
+
+Profiles.getInitialProps = async (ctx) => {
+  auth(ctx);
+
+  return {};
+};
+
+export default Profiles;
