@@ -1,31 +1,37 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
 const links = [
   {
-    href: '/races',
-    label: 'Races'
+    href: "/races",
+    label: "Races",
   },
   {
-    href: 'https://dotwatcher.cc/results',
-    label: 'Dotwatcher live results'
-  }
-].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`
-  return link
-})
+    href: "/profiles",
+    label: "Users / Profiles",
+  },
+  {
+    href: "https://dotwatcher.cc/results",
+    label: "Dotwatcher live results",
+  },
+].map((link) => {
+  link.key = `nav-link-${link.href}-${link.label}`;
+  return link;
+});
 
 const Nav = () => (
   <nav>
     <ul>
       <li>
-        <Link href='/'>
+        <Link href="/">
           <a className="link blue underline">Home</a>
         </Link>
       </li>
       {links.map(({ key, href, label }) => (
         <li key={key}>
-          <a className="link blue underline" href={href}>{label}</a>
+          <a className="link blue underline" href={href}>
+            {label}
+          </a>
         </li>
       ))}
     </ul>
@@ -33,8 +39,7 @@ const Nav = () => (
     <style jsx>{`
       :global(body) {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-          Helvetica, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Helvetica, sans-serif;
         color: #111111;
       }
       nav {
@@ -53,6 +58,6 @@ const Nav = () => (
       }
     `}</style>
   </nav>
-)
+);
 
-export default Nav
+export default Nav;
