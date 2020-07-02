@@ -6,7 +6,5 @@ export default async function handle(req, res) {
     res.send({ results });
   } catch (error) {
     res.json({ error });
-  } finally {
-    db.release();
   }
 }
