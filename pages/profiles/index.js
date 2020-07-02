@@ -54,7 +54,7 @@ const allUsers = async () => {
   const getUsers = async (currentPage = 0) => {
     const { data } = await Axios({
       method: "get",
-      url: `http://localhost:3000/api/auth0/users?page=${currentPage}&per_page=100`,
+      url: `/api/auth0/users?page=${currentPage}&per_page=100`,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
