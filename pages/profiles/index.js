@@ -159,7 +159,7 @@ const Profiles = () => {
   };
 
   const handleRegisteredAndUnclaimed = async () => {
-    setLoading(false);
+    setLoading(true);
     try {
       const auth0 = await allUsers();
       const claimedUsers = await getClaimedRiders();
