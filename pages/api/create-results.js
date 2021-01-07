@@ -65,7 +65,7 @@ export default async function handle(req, res) {
           rowToArray
         );
       } catch (error) {
-        // console.log(error);
+        console.log(error);
         erroringLines.push({ line: i, row: Object.values(rowOriginal), error });
       }
       i++;
