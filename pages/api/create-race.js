@@ -28,7 +28,11 @@ export default async function handle(req, res) {
 
   try {
     const result = await db.query(
-      `INSERT INTO races(name, slug, year, startDate, endDate, startLocation, finishLocation, length, terrain, description) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id`,
+      `INSERT INTO 
+        races(name, slug, year, startDate, endDate, startLocation, finishLocation, length, terrain, description)
+      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+      RETURNING
+        id`,
       values
     );
     return res.json({ status: 200, id: result.rows[0].id });

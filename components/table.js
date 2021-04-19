@@ -17,6 +17,7 @@ const Table = ({ results }) => (
           <th>Category</th>
           <th>Nationality</th>
           <th>Finish location</th>
+          <th>Finish distance</th>
           <th>Notes</th>
         </tr>
       </thead>
@@ -36,6 +37,7 @@ const Table = ({ results }) => (
               <td>{result.category}</td>
               <td>{result.nationality}</td>
               <td>{result.finishlocation}</td>
+              <td>{result.finishdistance}</td>
               <td>{result.notes}</td>
             </tr>
           );

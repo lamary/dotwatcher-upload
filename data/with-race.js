@@ -15,7 +15,7 @@ export const WithRace = Page => {
     const allResultsResponse = await fetch(apiUrl(`/api/race?id=${ctx.query.id}`, ctx.req));
     const {race, results} = await allResultsResponse.json();
 
-    const csvHeaders = ['Name', 'Position', 'Cap', 'Class', 'Days', 'Hours', 'Minutes', 'Result', 'Bike', 'Category', 'Finish location', 'Notes']
+    const csvHeaders = ['Name', 'Nationality', 'Position', 'Cap', 'Class', 'Days', 'Hours', 'Minutes', 'Result', 'Bike', 'Category', 'Finish location', 'Finish Distance', 'Notes']
     const download = [csvHeaders, ...results.map(result => Object.values(result))]
 
     return {
