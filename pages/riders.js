@@ -10,9 +10,9 @@ export default () => {
       const { riders } = values;
       try {
         const { data } = await axios({
-          url: '/api/delete-riders',
+          url: '/api/delete-rider',
           method: 'delete',
-          body: { riders },
+          data: { riders },
         });
 
         console.log(data);
