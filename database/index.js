@@ -6,10 +6,11 @@ const config = {
   password: process.env.PGPASSWORD,
   port: process.env.PGPORT,
   ssl: 'require',
-  user: process.env.PGUSER
+  user: process.env.PGUSER,
 };
 
 const pool = new Pool(config);
-module.exports = {
+
+export default {
   query: (text, params) => pool.query(text, params),
-}
+};
