@@ -1,11 +1,11 @@
-import React from "react";
-import Head from "next/head";
-import Nav from "../components/nav";
-import CreateRace from "../components/create-race";
-import DeleteRace from "../components/delete-button";
-import { WithRaces } from "../data/with-races";
+import React from 'react';
+import Head from 'next/head';
+import Nav from '../components/nav';
+import CreateRace from '../components/create-race';
+import DeleteRace from '../components/delete-button';
+import { WithRaces } from '../data/with-races';
 
-const Races = ({ allRaces }) => (
+const Races = ({ allRaces = [] }) => (
   <React.Fragment>
     <Head>
       <title>Races</title>
@@ -19,45 +19,46 @@ const Races = ({ allRaces }) => (
       <CreateRace />
       <div>
         <h1 className="ttu tracked f3 fw6 mt0 mb4">All races</h1>
-        {allRaces.map((race, index) => {
-          return (
-            <React.Fragment key={`heading-${index}`}>
-              <h2 className="f4 fw6">{race.name}</h2>
-              <table key={`table-${index}`} className="w-100 f5 mb5">
-                <thead>
-                  <tr className="tl">
-                    <th>Slug</th>
-                    <th>Year</th>
-                    <th>Length (km)</th>
-                    <th colSpan="2">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {race.events.map((event, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{event.slug}</td>
-                        <td>{event.year}</td>
-                        <td>{event.length}</td>
-                        <td>
-                          <a
-                            className="link ba bw1 b--blue bg-blue hover-bg-dark-blue white ttn f4 fw4 pv1 ph2"
-                            href={`/race/${event.id}`}
-                          >
-                            Edit results
-                          </a>
-                        </td>
-                        <td>
-                          <DeleteRace deleteType="race" race={event} />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </React.Fragment>
-          );
-        })}
+        {allRaces.length &&
+          allRaces.map((race, index) => {
+            return (
+              <React.Fragment key={`heading-${index}`}>
+                <h2 className="f4 fw6">{race.name}</h2>
+                <table key={`table-${index}`} className="w-100 f5 mb5">
+                  <thead>
+                    <tr className="tl">
+                      <th>Slug</th>
+                      <th>Year</th>
+                      <th>Length (km)</th>
+                      <th colSpan="2">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {race.events.map((event, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>{event.slug}</td>
+                          <td>{event.year}</td>
+                          <td>{event.length}</td>
+                          <td>
+                            <a
+                              className="link ba bw1 b--blue bg-blue hover-bg-dark-blue white ttn f4 fw4 pv1 ph2"
+                              href={`/race/${event.id}`}
+                            >
+                              Edit results
+                            </a>
+                          </td>
+                          <td>
+                            <DeleteRace deleteType="race" race={event} />
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </React.Fragment>
+            );
+          })}
       </div>
     </div>
     <style jsx>{`
