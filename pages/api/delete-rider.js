@@ -3,14 +3,18 @@ import db from '../../database';
 export default async function handle(req, res) {
 	switch (req.method.toLowerCase()) {
 		case 'delete':
-			const { riders } = req.body;
+			let { riders } = req.body;
 
 			if (!riders) {
 				return res.json('No riders sent in body');
 			}
 
+			riders = riders.map((x) => `'${x}'`);
+
+			riders = riders.join(', ');
+
 			try {
-				await db.query(`DELETE FROM riders WHERE name IN ($1)`, [riders]);
+				await db.query(`DELETE FROM riders WHERE name IN (${riders})`);
 
 				res.send({ status: 200 });
 
