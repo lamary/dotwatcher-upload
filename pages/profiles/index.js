@@ -2,10 +2,9 @@ import React from 'react';
 import Head from 'next/head';
 import Nav from '../../components/nav';
 import auth from '../../utils/auth-check';
-import Axios from 'axios';
+
 import styled from 'styled-components';
 
-import { isWithinInterval } from 'date-fns';
 import Link from 'next/link';
 
 import 'react-date-range/dist/styles.css'; // main style file
@@ -53,9 +52,7 @@ const Profiles = () => {
 };
 
 Profiles.getInitialProps = async (ctx) => {
-	auth(ctx);
-
-	return {};
+	return auth(ctx);
 };
 
 export default Profiles;
