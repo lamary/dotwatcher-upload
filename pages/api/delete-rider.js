@@ -1,28 +1,31 @@
 import db from '../../database';
 
 export default async function handle(req, res) {
-  switch (req.method.toLowerCase()) {
-    case 'delete':
-      const { riders } = req.body;
+	switch (req.method.toLowerCase()) {
+		case 'delete':
+			const { riders } = req.body;
 
-      if (!riders) {
-        return res.json('No riders sent in body');
-      }
+			if (!riders) {
+				return res.json('No riders sent in body');
+			}
 
-      try {
-        const res = await db.query(`DELETE from riders where riders.name in ($1))`, [riders]);
+			try {
+				await db.query(`DELETE FROM riders WHERE name IN ($1)`, [riders]);
 
-        console.log(res);
+				res.send({ status: 200 });
 
-        return res.json('OK');
-      } catch (error) {
-        console.log(error);
-        return res.json({ error });
-      } finally {
-        db.release();
-      }
+				return;
+			} catch (error) {
+				console.log(error);
 
-    default:
-      return res.json('Method not implimented');
-  }
+				res.json({ status: 500, error });
+
+				return;
+			} finally {
+				db.release();
+			}
+
+		default:
+			return res.json('Method not implimented');
+	}
 }
