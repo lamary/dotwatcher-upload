@@ -21,8 +21,6 @@ export default async function handle(req, res) {
 				res.json({ status: 500, error });
 
 				return;
-			} finally {
-				db.release();
 			}
 
 		default:
