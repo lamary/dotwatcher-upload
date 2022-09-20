@@ -1,12 +1,12 @@
-Name, Position, Cap, Class, Days, Hours, Minutes, Result, Bike,Nationality, Category, Finish location, Finish distance, Notes
+Name,Position,Cap,Class,Days,Hours,Minutes,Result,Bike,Nationality,Category,Finish location,Finish distance,Notes
 Jon Heslop,1,1,SOLO,9,2,14,FINISHED,TRADITIONAL_GEARED,UK,MEN,,,
 Grace Lambert-Smith,1,1,SOLO,9,2,14,FINISHED,TRADITIONAL_GEARED,England,WOMEN,,,
-Jon Heslop,1,1,PAIR,9,2,14,FINISHED,TRADITIONAL_GEARED,Germany,MEN,,,
+Jon Heslop,1,1,PAIR,9,2,14,FINISHED_OUT_OF_CLASSIFICATION,TRADITIONAL_GEARED,Germany,NON_BINARY,,,
 Jon Heslop,1,1,SOLO,9,2,14,FINISHED_OVER_TIME_LIMIT,TRADITIONAL_GEARED,United Kingdom,MEN,,,
 Jon Heslop,1,1,SOLO,9,2,14,SCRATCHED,TRADITIONAL_GEARED,UK,MEN,,,
-Jon Heslop,1,1,SOLO,9,2,14,DISQUALIFIED,TRADITIONAL_GEARED,UK,MEN,,,
+Jon Heslop,1,1,SOLO,9,2,14,DISQUALIFIED,FOLDING,UK,MEN,,,
 Jon Heslop,1,1,SOLO,9,2,14,FINISHED,SINGLE_SPEED,UK,MEN,,,
 Jon Heslop,1,1,SOLO,9,2,14,FINISHED,FIXED,UK,MEN,,1100,
 Jon Heslop,1,1,SOLO,9,2,14,FINISHED,TANDEM,UK,MEN,,750,
-Jon Heslop,1,1,SOLO,9,2,14,FINISHED,UNICYCLE,UK,MEN,Finish location is optional,200,
+Jon Heslop,1,1,SOLO,9,2,14,FINISHED,UNICYCLE,UK,MEN,Finish location is optional,200,2hr time penalty
 Jon Heslop,1,1,SOLO,9,2,14,FINISHED,VELOMOBILE,UK,MEN,,,Notes are optional
